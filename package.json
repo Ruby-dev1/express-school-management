@@ -1,0 +1,25 @@
+{
+  "name": "scl-mgnt",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Ruby-dev1/express-school-management#readme",
+  "bugs": {
+    "url": "https://github.com/Ruby-dev1/express-school-management/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruby-dev1/express-school-management.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "node --watch ./src/app.js"
+
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

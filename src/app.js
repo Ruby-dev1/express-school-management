@@ -10,6 +10,13 @@
   app.use(express.json())
 
 
+  app.get("/",(req,res)=>{
+   res.status(200).json({
+      message:"homepage",
+      success:true   })
+  })
+
+
 
 
 //  app.get("/",(req,res)=>{

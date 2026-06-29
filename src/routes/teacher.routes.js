@@ -8,7 +8,7 @@ const teachers = [];
 
 //* get all teachers 
 
- router.get("/teachers",(req,res)=>{
+ router.get("/",(req,res)=>{
     const query = req.query;
     console.log(query);
      res.status(200).json ({
@@ -22,7 +22,7 @@ const teachers = [];
 
  //* get teachers by id 
 
- router.get("/teachers/:id",(req,res)=>{
+ router.get("/:id",(req,res)=>{
     // const id = req.params.id
      const {id} = req.params;
     const teacher = teachers.find((teacher)=> teacher.id=== Number(id))

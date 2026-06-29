@@ -5,7 +5,7 @@
   //!CRUD STUDENTS 
  //* get all students
 
- router.get ("/students", (req, res)=>{
+ router.get ("/", (req, res)=>{
        // res.send("<h1> all users </h1>")
        const query = req.query;
        console.log(query);
@@ -14,10 +14,11 @@
         success: true,
         data: students,
        })
+        
     })
 
  //* get all students by id
- router.get("/students/:id",(req, res)=>{
+ router.get("/:id",(req, res)=>{
     // app.send("<h1> students </h1>")
     // const id = req.params.id
     const {id} = req.params;
@@ -35,19 +36,15 @@
     res.status(200).json ({
         message: `student by ${id} fetched`,
         success : true,
-        data: [{
-            id: id,
-            name: "Ally",
-            email: "Ally@gmail.com"
-
-        }]
+        data: student
+            
 
 
     })
  })
 
  //* create students
- router.post("/students",(req, res)=>{
+ router.post("/create",(req, res)=>{
 
     const {name,email,password} = req.body;
 
@@ -68,9 +65,10 @@
     })
 
  })
+ 
  //* update students by id
 
- router.put("/students/:id", (req, res)=>{
+ router.put("/:id", (req, res)=>{
      
     // const id = req.params.id;
     const {id} = req.params;
@@ -102,7 +100,7 @@
  })
 
  //* delete students by id
- router.delete("/students/:id", (req, res)=>{
+ router.delete("/:id", (req, res)=>{
     // const id = req.params.id
 
     const {id} = req.params;
