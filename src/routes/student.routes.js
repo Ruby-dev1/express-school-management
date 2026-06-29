@@ -1,4 +1,5 @@
  import express from "express"
+  const router = express.Router();
  import{
     getall,
     getbyId,
@@ -7,7 +8,7 @@
     remove
  } from "../controllers/student.controller.js"
 
- const router = express.Router();
+
 
 
   //!CRUD STUDENTS 
@@ -29,5 +30,5 @@
  //* delete students by id
  router.delete("/:id", remove)
 
- 
+
      export default router;
