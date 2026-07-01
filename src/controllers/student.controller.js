@@ -14,15 +14,15 @@
 
  //* get student by id
 
- export const getbyId = (req,res)=>{
+ export const getbyId = (req,res,next)=>{
     const {id} = req.params
-    const student = students.findIndex((student)=>student.id===Number(id));
+    const student = students.find((student)=>student.id===Number(id));
     if(!student){
-        res.status(400).json({
-            message:"student not found",
-            success: false,
-            data: null
-        });
+       next({
+        message:"student not found",
+        statusCode:404
+       })
+    
         return;
     }
 

@@ -7,7 +7,7 @@
  const app = express();
 
  const server = http.createServer(app);
-  app.use(express.json())
+
 
 
   app.get("/",(req,res)=>{
@@ -17,11 +17,44 @@
   })
 
 
-
+const middleware = (req,res,next)=>{
+   console.log("middleware 1")
+   next();
+}
 
 //  app.get("/",(req,res)=>{
 //     res.send("<h1> SCHOOL--HOME PAGE")
 //  })
+
+//! using middlewares
+
+app.use(middleware);
+app.use((req,res,next)=>{
+   console.log("middileware 2");
+   req.student ={
+      name:"John",
+   }
+   next();
+})
+
+app.use((req,res,next)=>{
+   console.log("mid 3")
+   console.log(req.user)
+
+   if(req.student){
+      next();
+
+   } else{
+      res.status(401).json({
+         message:"unauthorized. Acess denied"
+      });
+   }
+
+});
+
+
+  app.use(express.json())
+
 
 //! using routes
 app.use("/students", studentRoutes)
@@ -51,3 +84,13 @@ app.use("/subjects", subjectRoutes)
     console.log(`server is running at http://localhost:8080`)
     console.log("press ctrl+c to close the server");
  })
+
+ app.use((err, req,res,next)=>{
+   console.log("error handler");
+   console.log(err)
+   res.status(err?.statusCode ?? 500).json({
+      message: err?.message ?? "something went wrong",
+      success:false,
+      data:null,
+   })
+ });

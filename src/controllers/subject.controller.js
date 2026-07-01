@@ -16,9 +16,10 @@ export const getall = (req,res)=>{
 
 export const getbyId= (req,res)=>{
     const{id}= req.params
-    const subject = subjects.findIndex((subject)=>subject.id===Number(id))
+    const subject = subjects.find((subject)=>subject.id===Number(id))
     if(!subject){
-        res.status(400).json({
+       
+         res.status(400).json({
             message:"subject not found",
             success: false,
             data: null

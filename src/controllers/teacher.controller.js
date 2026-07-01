@@ -15,10 +15,10 @@ export const getall = (req,res)=>{
 
 export const getbyId = (req,res)=>{
     const {id} = req.params
-    const teacher = teachers.findIndex((teacher)=>teacher.id===Number(id));
+    const teacher = teachers.find((teacher)=>teacher.id===Number(id));
     if(!teacher){
-        res.status(400).json({
-            message: "teacher not found",
+         res.status(400).json({
+            message:"teacher not found",
             success: false,
             data: null
         });
