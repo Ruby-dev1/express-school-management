@@ -14,16 +14,15 @@ export const getall = (req,res)=>{
 
 //* get subject by id
 
-export const getbyId= (req,res)=>{
+export const getbyId= (req,res,next)=>{
     const{id}= req.params
     const subject = subjects.find((subject)=>subject.id===Number(id))
     if(!subject){
        
-         res.status(400).json({
+        next({
             message:"subject not found",
-            success: false,
-            data: null
-        });
+            statusCode: 404
+        })
         return 
     }
 
