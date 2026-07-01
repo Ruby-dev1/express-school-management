@@ -13,15 +13,19 @@ export const getall = (req,res)=>{
 }
 //* get teacher by id
 
-export const getbyId = (req,res)=>{
+export const getbyId = (req,res,next)=>{
     const {id} = req.params
     const teacher = teachers.find((teacher)=>teacher.id===Number(id));
     if(!teacher){
-         res.status(400).json({
+        //  res.status(400).json({
+        //     message:"teacher not found",
+        //     success: false,
+        //     data: null
+        // });
+        next({
             message:"teacher not found",
-            success: false,
-            data: null
-        });
+            statusCode:404
+        })
         return 
     }
     res.status(200).json({
