@@ -85,12 +85,12 @@ app.use("/subjects", subjectRoutes)
     console.log("press ctrl+c to close the server");
  })
 
- app.use((err, req,res,next)=>{
-   console.log("error handler");
-   console.log(err)
-   res.status(err?.statusCode ?? 500).json({
-      message: err?.message ?? "something went wrong",
-      success:false,
-      data:null,
-   })
- });
+//  app.use((err, req,res,next)=>{
+//    console.log("error handler");
+//    console.log(err)
+//    res.status(err?.statusCode ?? 500).json({
+//       message: err?.message ?? "something went wrong",
+//       success:false,
+//       data:null,
+//    })
+//  });
